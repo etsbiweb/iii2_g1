@@ -37,7 +37,7 @@
                 <a href="about.php" class="nav-item nav-link">About Us</a>
                 <a href="class.php" class="nav-item nav-link">Classes</a>
                 <a href="products.php" class="nav-item nav-link">Products</a>
-                 <a href="admin/adminsignin.php"><i class=" nav-item nav-link fa fa-fw fa-user"></i> </a>
+                <a href="admin.php"><i class=" nav-item nav-link fa fa-fw fa-user"></i> </a>
             </div>
         </div>
     </nav>
@@ -88,7 +88,7 @@
                         Lorem justo tempor sit aliquyam invidunt, amet vero ea dolor ipsum ut diam sit dolores, dolor
                         sit eos sea sanctus erat lorem nonumy sanctus takimata. Kasd amet sit sadipscing at..
                     </p>
-                    <a href="signin.php" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
+                    <a href="signin.html" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
                 </div>
             </div>
             <div class="col-md-6 p-0">
@@ -99,27 +99,12 @@
                         Lorem justo tempor sit aliquyam invidunt, amet vero ea dolor ipsum ut diam sit dolores, dolor
                         sit eos sea sanctus erat lorem nonumy sanctus takimata. Kasd amet sit sadipscing at..
                     </p>
-                    <a href="signin.php" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
+                    <a href="signin.html" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Gym Class End -->
-
-   <!-- Subscribe Start -->
-   <div class="subscribe container-fluid my-5 py-5 text-center">
-    <h4 class="display-4 text-white font-weight-bold mt-5 mb-3">Send Us a Message</h4>
-    <p class="text-white mb-4">Send us a message and get response under an hour</p>
-    <form class="form-inline justify-content-center mb-5">
-        <div class="input-group">
-            <input type="text" class="form-control-lg" placeholder="Type here.." style="border-top-left-radius: 50px; border-bottom-left-radius: 50px; padding: 12px; border: 1px">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="submit" style="border-top-right-radius: 50px; border-bottom-right-radius: 50px; padding: 12px 24px; border: none;">Send</button>
-            </div>
-        </div>
-    </form>
-</div>
-<!-- Subscribe End -->
 
 
     <!-- About Start -->
@@ -143,7 +128,7 @@
                         <p>Ipsum sanctu dolor ipsum dolore sit et kasd duo</p>
                     </div>
                 </div>
-                <a href="" class="btn btn-lg px-4 btn-outline-primary">Join Us</a>
+                <a href="" class="btn btn-lg px-4 btn-outline-primary">Learn More</a>
             </div>
         </div>
     </div>
@@ -191,7 +176,20 @@
  
 
 
- 
+    <!-- Subscribe Start 
+    <div class="subscribe container-fluid my-5 py-5 text-center">
+        <h4 class="display-4 text-white font-weight-bold mt-5 mb-3">Subscribe Our Newsletter</h4>
+        <p class="text-white mb-4">Subscribe and get Our latest article in your inbox</p>
+        <form class="form-inline justify-content-center mb-5">
+            <div class="input-group">
+                <input type="text" class="form-control-lg" placeholder="Your Email">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Subscribe</button>
+                </div>
+            </div>
+        </form>
+    </div>
+     Subscribe End -->
 
 
     <!-- Class Timetable Start -->
@@ -463,52 +461,94 @@
 
 
     <!-- BMI Calculation Start -->
-    <div class="container-fluid position-relative bmi my-5">
-        <div class="container">
-            <div class="row px-3 align-items-center">
-                <div class="col-md-6">
-                    <div class="pr-md-3 d-none d-md-block">
-                        <h4 class="text-primary">Body Mass Index </h4>
-                        <h4 class="display-4 text-white font-weight-bold mb-4">Whate is BMI?</h4>
-                        <p class="m-0 text-white">Vero elitr lorem magna justo magna justo at justo est ipsum sed clita lorem dolor ipsum sed. Lorem sea lorem vero. Sanct dolor clita clita rebum kasd magna erat diam</p>
-                    </div>
+<!-- BMI Calculation Start -->
+<div class="container-fluid position-relative bmi my-5">
+    <div class="container">
+        <div class="row px-3 align-items-center">
+            <div class="col-md-6">
+                <div class="pr-md-3 d-none d-md-block">
+                    <h4 class="text-primary">Body Mass Index </h4>
+                    <h4 class="display-4 text-white font-weight-bold mb-4">What is BMI?</h4>
+                    <p class="m-0 text-white">Vero elitr lorem magna justo magna justo at justo est ipsum sed clita lorem dolor ipsum sed. Lorem sea lorem vero. Sanct dolor clita clita rebum kasd magna erat diam</p>
                 </div>
-                <div class="col-md-6 bg-secondary py-5">
-                    <div class="py-5 px-3">
-                        <h1 class="mb-4 text-white">Calculate your BMI</h1>
-                        <form>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Weight (KG)">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Height (CM)">
-                                </div>
+            </div>
+            <div class="col-md-6 bg-secondary py-5">
+                <div class="py-5 px-3">
+                    <h1 class="mb-4 text-white">Calculate your BMI</h1>
+                    <form id="bmiForm">
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <input type="number" id="weight" class="form-control form-control-lg bg-dark text-white" placeholder="Weight (KG)" required>
                             </div>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Age">
-                                </div>
-                                <div class="col form-group">
-                                    <select class="custom-select custom-select-lg bg-dark text-muted">
-                                        <option>Gender</option>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                    </select>
-                                </div>
+                            <div class="col form-group">
+                                <input type="number" id="height" class="form-control form-control-lg bg-dark text-white" placeholder="Height (CM)" required>
                             </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="button" class="btn btn-lg btn-block btn-dark border-light"
-                                        value="Calculate Now">
-                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <input type="number" class="form-control form-control-lg bg-dark text-white" placeholder="Age">
                             </div>
-                        </form>
-                    </div>
+                            <div class="col form-group">
+                                <select class="custom-select custom-select-lg bg-dark text-muted">
+                                    <option>Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="bmiAlert" class="alert d-none text-center font-weight-bold" role="alert"></div>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="submit" class="btn btn-lg btn-block btn-dark border-light" value="Calculate Now">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- BMI Calculation End -->
+
+<script>
+    document.getElementById('bmiForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const weight = parseFloat(document.getElementById('weight').value);
+        const height = parseFloat(document.getElementById('height').value);
+        const alertBox = document.getElementById('bmiAlert');
+
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+            alertBox.className = 'alert alert-danger text-center font-weight-bold';
+            alertBox.textContent = 'Please enter valid height and weight values.';
+            alertBox.classList.remove('d-none');
+            return;
+        }
+
+        const heightInMeters = height / 100;
+        const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
+        let category = '';
+        let alertType = '';
+
+        if (bmi < 18.5) {
+            category = 'Underweight';
+            alertType = 'danger';
+        } else if (bmi <= 24.9) {
+            category = 'Normal';
+            alertType = 'success';
+        } else if (bmi <= 29.9) {
+            category = 'Overweight';
+            alertType = 'danger';
+        } else {
+            category = 'Obese';
+            alertType = 'danger';
+        }
+
+        alertBox.className = `alert alert-${alertType} text-center font-weight-bold`;
+        alertBox.textContent = `Your BMI is ${bmi} - ${category}`;
+        alertBox.classList.remove('d-none');
+    });
+</script>
+
     <!-- BMI Calculation End -->
 
 
@@ -525,7 +565,7 @@
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">WHEY PROTEIN</h4>
                         
                     </div>
@@ -537,7 +577,7 @@
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">CREATINE</h4>
                         
                     </div>
@@ -549,7 +589,7 @@
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">BCAA</h4>
                         
                     </div>
@@ -561,7 +601,7 @@
                     <div class="card-social d-flex align-items-center justify-content-center">
                         <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">PRE-WORKOUT</h4>
                         
                     </div>
@@ -597,11 +637,11 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Links</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="about.php"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                   
-                    <a class="text-white mb-2" href="class.php"><i class="fa fa-angle-right mr-2"></i>Classes</a>
-                    <a class="text-white" href="products.php"><i class="fa fa-angle-right mr-2"></i>Products</a>
+                    <a class="text-white mb-2" href="class.html"><i class="fa fa-angle-right mr-2"></i>Classes</a>
+                    <a class="text-white" href="products.html"><i class="fa fa-angle-right mr-2"></i>Products</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">

@@ -22,7 +22,7 @@
 </head>
 
 <body class="bg-white">
-    <!-- Navbar Start -->
+    <!-- Navbar Start 
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="" class="navbar-brand">
@@ -33,28 +33,29 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4" style="background: transparent;">
-                    <a href="index.php" class="nav-item nav-link">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About Us</a>                   
-                    <a href="class.php" class="nav-item nav-link">Classes</a>                  
-                    <a href="contact.php" class="nav-item nav-link active">Products</a>
-                    <a href="admin.php"><i class=" nav-item nav-link fa fa-fw fa-user"></i> </a>
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About Us</a>                   
+                    <a href="class.html" class="nav-item nav-link">Classes</a>                  
+                    <a href="contact.html" class="nav-item nav-link active">Products</a>
+                    <a href="admin.html"><i class=" nav-item nav-link fa fa-fw fa-user"></i> </a>
                 </div>
             </div>
             
         </nav>
     </div>
-    <!-- Navbar End -->
+    Navbar End -->
 
         
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">PRODUCTS</h4>
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">PROTEIN BAR</h4>
+            <h5 class="card-title text-primary">Available at our gym</h5>
             <div class="d-inline-flex">
-                <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
+                <p class="m-0 text-white"><a class="text-white" href="index.html">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Products</p>
+                <p class="m-0 text-white" href="products.html">Products</p>
             </div>
         </div>
     </div>
@@ -64,59 +65,109 @@
 
     <div class="container pt-5 team">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary display-4 font-weight-bold">PRODUCT CATEGORIES</h4>
-            <h4 class=" font-weight-bold">Sports supplements, nutrition supplements</h4>
+          
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="img/whey.jpg" alt="">
+                    <img class="card-img-top" src="slikeproducts/cokobar.jpg" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-danger rounded-pill text-center px-4" href="products/whey.php">MORE LIKE THIS</a>
+                      
                     </div>
                     <div class="card-body bg-white">
-                        <h4 class="card-title text-primary">WHEY PROTEIN</h4>
+                        <h4 class="card-title text-primary">COCONUT</h4>
                         
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="img/cokobar.jpg" alt="">
+                    <img class="card-img-top" src="slikeproducts/specialedition" alt="">
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-danger rounded-pill text-center px-4" href="products/proteinbar.php">MORE LIKE THIS</a>
+                      
                     </div>
                     <div class="card-body bg-white">
-                        <h4 class="card-title text-primary">PROTEIN BAR</h4>
+                        <h4 class="card-title text-primary">SPECIAL EDITION</h4>
                         
                     </div>
                 </div>
             </div>
                 <div class="col-lg-3 col-md-6 mb-5">
                     <div class="card border-0 bg-secondary text-center text-white">
-                        <img class="card-img-top" src="img/product1proteini.jpeg" alt="">
+                        <img class="card-img-top" src="slikeproducts/banana.jpeg" alt="">
                         <div class="card-social d-flex align-items-center justify-content-center">
-                            <a class="btn btn-danger rounded-pill text-center px-4" href="products/wheyprotein.php">MORE LIKE THIS</a>
+                        
                         </div>
                         <div class="card-body bg-white">
-                            <h4 class="card-title text-primary">WHEY PROTEIN</h4>
+                            <h4 class="card-title text-primary">BANANA</h4>
                             
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5">
                     <div class="card border-0 bg-secondary text-center text-white">
-                        <img class="card-img-top" src="img/product2kreatin.jpg" alt="">
+                        <img class="card-img-top" src="slikeproducts/oreo.jpg" alt="">
                         <div class="card-social d-flex align-items-center justify-content-center">
-                            <a class="btn btn-danger rounded-pill text-center px-4" href="products/kreatin.php">MORE LIKE THIS</a>
+                          
                         </div>
                         <div class="card-body bg-white">
-                            <h4 class="card-title text-primary">ENERGY</h4>
+                            <h4 class="card-title text-primary">OREO</h4>
                             
                         </div>
                     </div>
                 </div>
-      
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <div class="card border-0 bg-secondary text-center text-white">
+                    <img class="card-img-top" src="slikeproducts/goonprotein1.png" alt="">
+                    <div class="card-social d-flex align-items-center justify-content-center">
+                      
+                    </div>
+                    <div class="card-body bg-white">
+                        <h4 class="card-title text-primary">WHEY</h4>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <div class="card border-0 bg-secondary text-center text-white">
+                    <img class="card-img-top" src="slikeproducts/pistachip.png" alt="">
+                    <div class="card-social d-flex align-items-center justify-content-center">
+                      
+                    </div>
+                    <div class="card-body bg-white">
+                        <h4 class="card-title text-primary">PISTACHIO</h4>
+                        
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="card border-0 bg-secondary text-center text-white">
+                        <img class="card-img-top" src="slikeproducts/proteingo3.jpg" alt="">
+                        <div class="card-social d-flex align-items-center justify-content-center">
+                        
+                        </div>
+                        <div class="card-body bg-white">
+                            <h4 class="card-title text-primary">CRANBERRY</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <div class="card border-0 bg-secondary text-center text-white">
+                        <img class="card-img-top" src="slikeproducts/goonprotein4.jpeg" alt="">
+                        <div class="card-social d-flex align-items-center justify-content-center">
+                          
+                        </div>
+                        <div class="card-body bg-white">
+                            <h4 class="card-title text-primary">CHRUNCH</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
            
     
 
@@ -132,7 +183,7 @@
 
 
 
-    <!-- Footer Start -->
+    <!-- Footer Start 
     <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
@@ -173,7 +224,7 @@
             </p>
         </div>
     </div>
-    <!-- Footer End -->
+     Footer End -->
 
 
     <!-- Back to Top -->
