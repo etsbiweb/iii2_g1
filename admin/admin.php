@@ -1,3 +1,10 @@
+<?php
+session_start();
+include 'C:\xampp\htdocs\nadijino - Copy\iii2_g1-main\includes\dbh.inc.php'; 
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,62 +128,119 @@
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
-                                <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>name</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
+                                <!-- Table Header -->
+<tr class="text-dark">
+    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+    <th scope="col">Invoice</th>
+    <th scope="col">Name</th>
+    <th scope="col">Date</th>
+    <th scope="col">Amount</th>
+    <th scope="col">Status</th>
+    <th scope="col">Action</th>
+</tr>
+
+<!-- Table Rows -->
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-121</td>
+    <td>Whey Protein</td>
+    <td>2025-05-01</td>
+    <td>$45.00</td>
+    <td>Paid</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-122</td>
+    <td>Creatin</td>
+    <td>2025-04-30</td>
+    <td>$30.00</td>
+    <td>Pending</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-123</td>
+    <td>BCAA</td>
+    <td>2025-04-28</td>
+    <td>$25.00</td>
+    <td>Paid</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-124</td>
+    <td>Pre-Workout</td>
+    <td>2025-04-26</td>
+    <td>$35.00</td>
+    <td>Refunded</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-125</td>
+    <td>Whey Protein</td>
+    <td>2025-04-25</td>
+    <td>$45.00</td>
+    <td>Paid</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-126</td>
+    <td>Creatin</td>
+    <td>2025-04-23</td>
+    <td>$30.00</td>
+    <td>Cancelled</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-127</td>
+    <td>BCAA</td>
+    <td>2025-04-21</td>
+    <td>$25.00</td>
+    <td>Paid</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-128</td>
+    <td>Pre-Workout</td>
+    <td>2025-04-19</td>
+    <td>$35.00</td>
+    <td>Pending</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-129</td>
+    <td>Whey Protein</td>
+    <td>2025-04-17</td>
+    <td>$45.00</td>
+    <td>Paid</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+<tr>
+    <td><input class="form-check-input" type="checkbox"></td>
+    <td>INV-130</td>
+    <td>BCAA</td>
+    <td>2025-04-15</td>
+    <td>$25.00</td>
+    <td>Refunded</td>
+    <td><a class="btn btn-sm btn-primary" href="#">Detail</a></td>
+</tr>
+
+                               
                             </tbody>
                         </table>
                     </div>
@@ -192,7 +256,8 @@
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
-                                <tr>
+                           
+                            <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
@@ -201,32 +266,31 @@
                                     <th scope="col">About</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>jhon@email.com</td>
-                                    <td>Male</td>
-                                    <td>Enjoys hiking and photography.</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>mark@email.com</td>
-                                    <td>Male</td>
-                                    <td>Loves coding and coffee.</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>jacob@email.com</td>
-                                    <td>Male</td>
-                                    <td>Fan of music and traveling.</td>
-                                </tr>
-                            </tbody>
+                <?php  
+$users = $user->prikaziSve();
+if(!empty($users)) {
+    echo '<tbody>';
+    foreach ($users as $user) {
+        $userID = htmlspecialchars($user['userID']);
+        $userName = htmlspecialchars($user['userName']);
+        $gender = htmlspecialchars($user['gender']);
+        $email = htmlspecialchars($user['email']);
+        $phoneNumber = htmlspecialchars($user['phoneNumber']);
+        $address = htmlspecialchars($user['address']);
+        $about = htmlspecialchars($user['about']);
+
+        echo '<tr>';
+        echo '<th scope="row">' . $userID . '</th>';
+        echo '<td>' . $userName . '</td>';
+        echo '<td>' . $email . '</td>';
+        echo '<td>' . $gender . '</td>';
+        echo '<td>' . $about . '</td>';
+        echo '</tr>';
+    }
+    echo '</tbody>';
+}
+?>
+                                </tbody>
                         </table>
 
                         <!-- Recent Sales End -->

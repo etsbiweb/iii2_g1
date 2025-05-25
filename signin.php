@@ -1,3 +1,8 @@
+<?php
+session_start();
+include 'includes/dbh.inc.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,24 +34,44 @@ $showAlert = false;
 $alertType = '';
 $alertMessage = '';
 
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = trim($_POST['name'] ?? '');
+    $userName = trim($_POST['userName'] ?? '');
     $gender = trim($_POST['gender'] ?? '');
     $email = trim($_POST['email'] ?? '');
-    $phone = trim($_POST['phone'] ?? '');
+    $phoneNumber = trim($_POST['phoneNumber'] ?? '');
     $address = trim($_POST['address'] ?? '');
-    $message = trim($_POST['message'] ?? '');
+    $about = trim($_POST['about'] ?? '');
 
-    if ($name && $gender && $email && $phone && $address && $message) {
-        $showAlert = true;
-        $alertType = 'success';
-        $alertMessage = 'Successfully submitted!';
+    if ($userName && $gender && $email && $phoneNumber && $address && $about) {
+        if ($user->addUser($userName, $gender, $email, $phoneNumber, $address, $about)) {
+            $showAlert = true;
+            $alertType = 'success';
+            $alertMessage = 'Successfully submitted and saved!';
+        } else {
+            $showAlert = true;
+            $alertType = 'danger';
+            $alertMessage = 'Database error: Could not save user.';
+        }
     } else {
         $showAlert = true;
         $alertType = 'danger';
         $alertMessage = 'Please fill in all fields!';
     }
 }
+
+
+    if (isset($_SESSION['add'])) {
+     echo $_SESSION['add'];
+     unset($_SESSION['add']);
+    }
+    if (isset($_SESSION['db_error'])) {
+     echo $_SESSION['db_error'];
+     unset($_SESSION['db_error']);
+    }
+   
+
 ?>
 
 <!-- Contact Start -->
@@ -64,11 +89,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <form method="POST" action="">
               <div class="mb-4">
-                <input type="text" name="name" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="Full Name">
+                <input type="text" name="userName" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="User Name">
               </div>
 
               <div class="mb-4">
-                <select name="gender" class="form-control form-control-lg bg-dark text-white border-danger">
+                <select name="gender" class="form-control form-control-lg bg-dark text-white border-danger" >
                   <option selected disabled value="">Choose Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -76,29 +101,64 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
               </div>
 
               <div class="mb-4">
-                <input type="email" name="email" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="Email Address">
+                <input type="email" name="email" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="Email Address" >
               </div>
 
               <div class="mb-4">
-                <input type="tel" name="phone" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="Phone Number">
+                <input type="tel" name="phoneNumber" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="Phone Number" >
               </div>
 
               <div class="mb-4">
-                <input type="text" name="address" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="Address">
+                <input type="text" name="address" class="form-control form-control-lg bg-dark text-white border-danger" placeholder="Address" >
               </div>
 
               <div class="mb-4">
-                <textarea name="message" class="form-control form-control-lg bg-dark text-white border-danger" rows="4" placeholder="Tell us your goals (build muscle, lose fat...)"></textarea>
+                <textarea name="about" class="form-control form-control-lg bg-dark text-white border-danger" rows="4" placeholder="What are your goals ? (build muscle, lose fat...)" ></textarea>
               </div>
 
               <?php if ($showAlert): ?>
                 <div class="alert alert-<?= $alertType ?> text-center fw-bold mb-4" role="alert">
                   <?= htmlspecialchars($alertMessage) ?>
                 </div>
-              <?php endif; ?>
+              
+                <?php
+                  $users = $user->prikaziSve();
+    if(!empty($users)){
+      foreach($users as $user){
+        $userID = htmlspecialchars($user['userID']);
+        $userName = htmlspecialchars($user['userName']);
+        $gender = htmlspecialchars($user['gender']);
+        $email = htmlspecialchars($user['email']);
+        $phoneNumber = htmlspecialchars($user['phoneNumber']);
+        $address = htmlspecialchars($user['address']);
+        $about = htmlspecialchars($user['about']);
+             
+        echo "<div class='col-md-4'>
+             <div class='card mb-4'>
+               <h3 class='card-header'><span id='broj-".$userID."'>".$gender.". </span><span id='ime-".$userID."'>".$userName."</span></h3>
+               <div class='card-body'>
+               <ul class='list-group list-group-flush'>
+                 <li class='list-group-item d-flex justify-content-between'>Email <span class='badge bg-dark nastupi-".$userID."'>".$email."</span></li>
+                 <li class='list-group-item d-flex justify-content-between'>Phone Number <span class='badge bg-dark kosevi-".$userID."'>".$phoneNumber."</span></li>
+                 <li class='list-group-item d-flex justify-content-between'>Address <span class='badge bg-dark asistencije-".$userID."'>".$address."</span></li>
+                 <li class='list-group-item d-flex justify-content-between'>About <span class='badge bg-dark skokovi-".$userID."'>".$about."</span></li>
+               </ul>
+               </div>
+               <div class='card-footer d-flex justify-content-evenly'>
+                 <button class='btn btn-success edit-btn' data-bs-toggle='modal' data-bs-target='#myModal' data-id=".$userID." id='edit-submit-".$userID."'>⚙</button>
+                 <a href='includes/delete.inc.php?id=".$userID."' class='btn btn-warning'>🗑</a>
+               </div>
+              </div>
+            </div>";
+      }
+    }
+              
+              ?>
+              
+                <?php endif; ?>
 
               <div class="text-center">
-                <button type="submit" class="btn btn-danger btn-lg px-5 py-2 fw-bold text-uppercase" style="border-radius: 0;">
+                <button type="submit" value="add" name="add" class="btn btn-danger btn-lg px-5 py-2 fw-bold text-uppercase" style="border-radius: 0;">
                   Send Message
                 </button>
               </div>

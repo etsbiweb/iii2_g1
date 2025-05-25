@@ -1,0 +1,10 @@
+CREATE TABLE igrac(
+        kosarkasID INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+        kosarkasBrojDresa INT(3) NOT NULL,
+        kosarkasImePrezime VARCHAR(100) NOT NULL,
+        kosarkasBrojNastupa INT(4) NOT NULL,
+        kosarkasProsjekKoseva FLOAT(4) NOT NULL,
+        kosarkasProsjekAsist FLOAT(4) NOT NULL,
+        kosarkasProsjekSkokova FLOAT(4) NOT NULL,
+        kosarkasSlika VARCHAR(200) NOT NULL
+    );
