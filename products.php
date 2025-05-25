@@ -37,7 +37,7 @@
                     <a href="about.php" class="nav-item nav-link">About Us</a>                   
                     <a href="class.php" class="nav-item nav-link">Classes</a>                  
                     <a href="contact.php" class="nav-item nav-link active">Products</a>
-                    <a href="admin.php"><i class=" nav-item nav-link fa fa-fw fa-user"></i> </a>
+                    <a href="admin/adminsignin.php"><i class=" nav-item nav-link fa fa-fw fa-user"></i> </a>
                 </div>
             </div>
             
