@@ -133,23 +133,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $address = htmlspecialchars($user['address']);
         $about = htmlspecialchars($user['about']);
              
-        echo "<div class='col-md-4'>
-             <div class='card mb-4'>
-               <h3 class='card-header'><span id='broj-".$userID."'>".$gender.". </span><span id='ime-".$userID."'>".$userName."</span></h3>
-               <div class='card-body'>
-               <ul class='list-group list-group-flush'>
-                 <li class='list-group-item d-flex justify-content-between'>Email <span class='badge bg-dark nastupi-".$userID."'>".$email."</span></li>
-                 <li class='list-group-item d-flex justify-content-between'>Phone Number <span class='badge bg-dark kosevi-".$userID."'>".$phoneNumber."</span></li>
-                 <li class='list-group-item d-flex justify-content-between'>Address <span class='badge bg-dark asistencije-".$userID."'>".$address."</span></li>
-                 <li class='list-group-item d-flex justify-content-between'>About <span class='badge bg-dark skokovi-".$userID."'>".$about."</span></li>
-               </ul>
-               </div>
-               <div class='card-footer d-flex justify-content-evenly'>
-                 <button class='btn btn-success edit-btn' data-bs-toggle='modal' data-bs-target='#myModal' data-id=".$userID." id='edit-submit-".$userID."'>⚙</button>
-                 <a href='includes/delete.inc.php?id=".$userID."' class='btn btn-warning'>🗑</a>
-               </div>
-              </div>
-            </div>";
+echo "<div class='col-12 col-md-6 col-lg-6 mx-auto'>
+         <div class='card border-0 shadow-lg rounded-5 overflow-hidden mb-5'>
+           <div class='card-header bg-gradient bg-primary text-white py-4 text-center'>
+             <h4 class='mb-1 fw-bold' id='ime-".$userID."'>".$userName."</h4>
+             <div class='fw-light' id='broj-".$userID."'>".$gender."</div>
+           </div>
+           <div class='card-body bg-body-secondary p-4'>
+             <ul class='list-group list-group-flush rounded'>
+               <li class='list-group-item d-flex justify-content-between align-items-center border-0 border-bottom'>
+                 <strong>Email:</strong> <span class='badge text-bg-dark fs-6 px-3 py-2 nastupi-".$userID."'>".$email."</span>
+               </li>
+               <li class='list-group-item d-flex justify-content-between align-items-center border-0 border-bottom'>
+                 <strong>Phone:</strong> <span class='badge text-bg-dark fs-6 px-3 py-2 kosevi-".$userID."'>".$phoneNumber."</span>
+               </li>
+               <li class='list-group-item d-flex justify-content-between align-items-center border-0 border-bottom'>
+                 <strong>Address:</strong> <span class='badge text-bg-dark fs-6 px-3 py-2 asistencije-".$userID."'>".$address."</span>
+               </li>
+               <li class='list-group-item d-flex justify-content-between align-items-center border-0'>
+                 <strong>About:</strong> <span class='badge text-bg-dark fs-6 px-3 py-2 skokovi-".$userID."'>".$about."</span>
+               </li>
+             </ul>
+           </div>
+           <div class='card-footer bg-white d-flex justify-content-center gap-4 py-4'>
+             <button class='btn btn-outline-success btn-lg edit-btn px-5' data-bs-toggle='modal' data-bs-target='#myModal' data-id=".$userID." id='edit-submit-".$userID."'>⚙ Uredi</button>
+             <a href='includes/delete.inc.php?id=".$userID."' class='btn btn-outline-danger btn-lg px-5'>🗑 Obriši</a>
+           </div>
+         </div>
+       </div>";
+
       }
     }
               
