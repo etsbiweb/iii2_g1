@@ -1,6 +1,5 @@
 <?php
-session_start();
-include 'C:\xampp\htdocs\nadijino - Copy\iii2_g1-main\includes\dbh.inc.php'; 
+include '../includes/dbh.inc.php';
 ?>
 
 
@@ -95,27 +94,144 @@ include 'C:\xampp\htdocs\nadijino - Copy\iii2_g1-main\includes\dbh.inc.php';
                             <span class="d-none d-lg-inline-flex">Message</span>
                         </a>
 
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notifications</span>
-                        </a>
+ <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 350px; max-height: 400px; overflow-y: auto;">
+    <h6 class="mb-3">Messages</h6>
 
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.png" alt=""
-                                style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Admin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="adminsignin.php" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
+    <?php
+   
+
+    try {
+        $stmt = $conn->query("SELECT messageID, message, created_at FROM messages ORDER BY created_at DESC");
+        $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($messages && count($messages) > 0):
+            foreach ($messages as $row):
+    ?>
+        <div class="d-flex align-items-center border-bottom py-2 message-item"
+            data-message="<?= htmlspecialchars($row['message']) ?>"
+            data-id = "<?= $row['messageID']?>">
+            <img class="rounded-circle flex-shrink-0" src="img/user.png" alt="" style="width: 40px; height: 40px;">
+            <div class="w-100 ms-2">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-0">anonymous</h6>
+                    <small class="text-muted"><?= date("H:i", strtotime($row['created_at'])) ?></small>
                 </div>
-            </nav>
-            <!-- Navbar End -->
+                <small><?= htmlspecialchars($row['message']) ?></small>
+            </div>
+        </div>
+    <?php
+            endforeach;
+        else:
+            echo '<div class="text-muted">No messages.</div>';
+        endif;
+    } catch (PDOException $e) {
+        echo '<div class="alert alert-danger">Greška pri dohvaćanju poruka: ' . $e->getMessage() . '</div>';
+    }
+    ?>
+</div>
+
+            </div>
+
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <img class="rounded-circle me-lg-2" src="img/user.png" alt="" style="width: 40px; height: 40px;">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                    <a href="../index.php" class="dropdown-item">Log Out</a>
+                </div>
+            </div>
+        </div>
+     </nav>
+     <!-- Navbar End -->
+
+<!-- Reply Popup -->
+<div id="replyPopup" style="position: fixed; bottom: 20px; right: 20px; width: 300px; background: white; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.2); padding: 15px; display: none; z-index: 1050; border-radius: 10px;">
+  <h6>Reply to Message</h6>
+  <p id="popupMessage" style="font-size: 14px; color: #555;"></p>
+  <p id="popupFeedback" style="font-size: 13px; color: green;"></p>
+
+  <form action="../includes/reply.php" id="replyForm" method="POST" >
+    <input type="hidden" name="messageID" id="originalMessageInput">
+    <div class="mb-2">
+      <textarea name="reply" class="form-control" rows="2" style="color:black" placeholder="Type your reply..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary">Send</button>
+    <button type="button" class="btn btn-sm btn-secondary" onclick="hidePopup()">Cancel</button>
+  </form>
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Otvaranje popupa kad se klikne poruka
+    document.querySelectorAll('.message-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const messageText = this.getAttribute('data-message');
+            const messageId = this.getAttribute('data-id');
+
+            document.getElementById('popupMessage').textContent = messageText;
+            document.getElementById('originalMessageInput').value = messageId;
+            document.getElementById('popupFeedback').textContent = ''; // očisti stari feedback
+
+            document.getElementById('replyPopup').style.display = 'block';
+        });
+    });
+
+    // AJAX za slanje forme
+    document.getElementById('replyForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch('../includes/reply.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Prikazi poruku korisniku
+            document.getElementById('popupFeedback').textContent = 'Poslali ste poruku.';
+
+            // Očisti textarea
+            document.querySelector('#replyForm textarea').value = '';
+        })
+        .catch(error => {
+            document.getElementById('popupFeedback').textContent = 'Došlo je do greške.';
+            document.getElementById('popupFeedback').style.color = 'red';
+        });
+    });
+});
+
+function hidePopup() {
+    document.getElementById('replyPopup').style.display = 'none';
+    document.getElementById('popupFeedback').textContent = '';
+}
+</script>
+      <!-- JavaScript for popup behavior -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">

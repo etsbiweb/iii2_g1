@@ -1,3 +1,22 @@
+<?php
+session_start();
+include_once 'includes/dbh.inc.php';
+
+try {
+   
+    $stmt = $conn->prepare("
+        SELECT r.reply, m.message, m.created_at
+FROM messages m
+LEFT JOIN replies r ON r.messagesID = m.messageID
+ORDER BY m.created_at DESC;
+
+    ");
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("ERORR: " . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +29,7 @@
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
@@ -25,7 +44,7 @@
    <!-- Navbar Start -->
 <div class="container-fluid p-0 nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark py-3" style="background: transparent;">
-        <a href="index.html" class="navbar-brand">
+        <a href="index.php" class="navbar-brand">
             <h1 class="m-0 display-4 font-weight-bold text-uppercase text-white">annd gym</h1>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -38,6 +57,45 @@
                 <a href="class.php" class="nav-item nav-link">Classes</a>
                 <a href="products.php" class="nav-item nav-link">Products</a>
                 <a href="admin/adminsignin.php"><i class=" nav-item nav-link fa fa-fw fa-user"></i> </a>
+            
+            <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
+        style="background: transparent; border: none; color: white; font-size: 1.2rem; cursor: pointer; margin-left: 15px;">
+  <i class="fa fa-comment"></i>
+</button>
+
+    <!-- Dropdown meni sa admin odgovorima -->
+    <div class="dropdown mt-4">
+    <ul class="dropdown-menu dropdown-menu-end w-200" style="max-height: 400px; overflow-y: auto;">
+        <?php if (count($results) > 0): ?>
+            <?php foreach ($results as $row): ?>
+                <li class="dropdown-item">
+                    <div>
+                        <strong>Admin reply:</strong> 
+                        <?php if (!empty($row['reply'])): ?>
+                            <?= htmlspecialchars($row['reply']) ?>
+                        <?php else: ?>
+                            <span class="text-muted"><em>Admin didn't reply.</em></span>
+                        <?php endif; ?>
+                        <br>
+                        <small class="text-muted">Your message "<?= htmlspecialchars($row['message']) ?>"</small><br>
+                        <small class="text-muted">Sended: <?= htmlspecialchars($row['created_at']) ?></small>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <li class="dropdown-item text-muted">No messages found.</li>
+        <?php endif; ?>
+    </ul>
+</div>
+
+
+</div>
+                
+
+
+  
+  </div>
+</div>
             </div>
         </div>
     </nav>
@@ -88,7 +146,7 @@
                         Lorem justo tempor sit aliquyam invidunt, amet vero ea dolor ipsum ut diam sit dolores, dolor
                         sit eos sea sanctus erat lorem nonumy sanctus takimata. Kasd amet sit sadipscing at..
                     </p>
-                    <a href="signin.html" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
+                    <a href="signin.php" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
                 </div>
             </div>
             <div class="col-md-6 p-0">
@@ -99,7 +157,7 @@
                         Lorem justo tempor sit aliquyam invidunt, amet vero ea dolor ipsum ut diam sit dolores, dolor
                         sit eos sea sanctus erat lorem nonumy sanctus takimata. Kasd amet sit sadipscing at..
                     </p>
-                    <a href="signin.html" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
+                    <a href="signin.php" class="btn btn-lg btn-outline-light mt-4 px-4">Join Now</a>
                 </div>
             </div>
         </div>
@@ -128,7 +186,7 @@
                         <p>Ipsum sanctu dolor ipsum dolore sit et kasd duo</p>
                     </div>
                 </div>
-                <a href="" class="btn btn-lg px-4 btn-outline-primary">Learn More</a>
+                <a href="signin.php" class="btn btn-lg px-4 btn-outline-primary">Join Us</a>
             </div>
         </div>
     </div>
@@ -141,7 +199,7 @@
             <div class="col-lg-4 p-0">
                 <div class="d-flex align-items-center bg-secondary text-white px-5" style="min-height: 300px;">
                     <i class="flaticon-training display-3 text-primary mr-3"></i>
-                    <div class="">
+                    <div class=>
                         <h2 class="text-white mb-3">Progression</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci velit id libero
                         </p>
@@ -151,7 +209,7 @@
             <div class="col-lg-4 p-0">
                 <div class="d-flex align-items-center bg-primary text-white px-5" style="min-height: 300px;">
                     <i class="flaticon-weightlifting display-3 text-secondary mr-3"></i>
-                    <div class="">
+                    <div class=>
                         <h2 class="text-white mb-3">Workout</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci velit id libero
                         </p>
@@ -161,7 +219,7 @@
             <div class="col-lg-4 p-0">
                 <div class="d-flex align-items-center bg-secondary text-white px-5" style="min-height: 300px;">
                     <i class="flaticon-treadmill display-3 text-primary mr-3"></i>
-                    <div class="">
+                    <div class=>
                         <h2 class="text-white mb-3">Nutrition</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci velit id libero
                         </p>
@@ -176,20 +234,39 @@
  
 
 
-    <!-- Subscribe Start 
-    <div class="subscribe container-fluid my-5 py-5 text-center">
-        <h4 class="display-4 text-white font-weight-bold mt-5 mb-3">Subscribe Our Newsletter</h4>
-        <p class="text-white mb-4">Subscribe and get Our latest article in your inbox</p>
-        <form class="form-inline justify-content-center mb-5">
-            <div class="input-group">
-                <input type="text" class="form-control-lg" placeholder="Your Email">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                </div>
-            </div>
-        </form>
+    <!-- Subscribe Start -->
+<div class="subscribe container-fluid my-5 py-5 text-center">
+    <h4 class="display-4 text-white font-weight-bold mt-5 mb-3">Send Us a Message</h4>
+    <p class="text-white mb-4">Send us a message and get response under an hour</p>
+     <?php
+        if(isset($_SESSION['add'])){
+          echo $_SESSION['add'];
+          unset($_SESSION['add']);
+        }
+        if(isset($_SESSION['db_error'])){
+          echo $_SESSION['db_error'];
+          unset($_SESSION['db_error']);
+        }
+      ?>
+  <form action="includes/message.inc.php" method="POST" class="form-inline justify-content-center mb-5">
+  <div class="input-group">
+    <textarea name="message" placeholder="Your anonymous message..." required
+      style="border-top-left-radius: 50px; border-bottom-left-radius: 50px; padding: 12px; border: 1px; resize: none;"
+      class="form-control-lg"></textarea>
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit"
+        style="border-top-right-radius: 50px; border-bottom-right-radius: 50px; padding: 12px 24px; border: none;">Send</button>
     </div>
-     Subscribe End -->
+  </div>
+</form>
+<?php
+if (isset($_SESSION['add'])) {
+    echo $_SESSION['add'];
+    unset($_SESSION['add']); 
+}
+?>
+  </div>
+  <!-- Subscribe End -->
 
 
     <!-- Class Timetable Start -->
@@ -561,9 +638,9 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="img/product1proteini.jpeg" alt="">
+                    <img class="card-img-top" src="img/product1proteini.jpeg" alt=>
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
+                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.php">Check Out</a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">WHEY PROTEIN</h4>
@@ -573,9 +650,9 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="img/product2kreatin.jpg" alt="">
+                    <img class="card-img-top" src="img/product2kreatin.jpg" alt=>
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
+                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.php">Check Out</a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">CREATINE</h4>
@@ -585,9 +662,9 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="img/product3aminokiseline.jpeg" alt="">
+                    <img class="card-img-top" src="img/product3aminokiseline.jpeg" alt=>
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
+                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.php">Check Out</a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">BCAA</h4>
@@ -597,9 +674,9 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <div class="card border-0 bg-secondary text-center text-white">
-                    <img class="card-img-top" src="img/product4preworkout.jpeg" alt="">
+                    <img class="card-img-top" src="img/product4preworkout.jpeg" alt=>
                     <div class="card-social d-flex align-items-center justify-content-center">
-                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.html">Check Out</a>
+                        <a class="btn btn-danger rounded-pill text-center px-4" href="products.php">Check Out</a>
                     </div>
                     <div class="card-body bg-secondary">
                         <h4 class="card-title text-primary">PRE-WORKOUT</h4>
@@ -637,11 +714,11 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Links</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                    <a class="text-white mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="about.php"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                   
-                    <a class="text-white mb-2" href="class.html"><i class="fa fa-angle-right mr-2"></i>Classes</a>
-                    <a class="text-white" href="products.html"><i class="fa fa-angle-right mr-2"></i>Products</a>
+                    <a class="text-white mb-2" href="class.php"><i class="fa fa-angle-right mr-2"></i>Classes</a>
+                    <a class="text-white" href="products.php"><i class="fa fa-angle-right mr-2"></i>Products</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -678,6 +755,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -151,11 +151,11 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Links</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                    <a class="text-white mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="about.php"><i class="fa fa-angle-right mr-2"></i>About Us</a>
                   
-                    <a class="text-white mb-2" href="class.html"><i class="fa fa-angle-right mr-2"></i>Classes</a>
-                    <a class="text-white" href="products.html"><i class="fa fa-angle-right mr-2"></i>Products</a>
+                    <a class="text-white mb-2" href="class.php"><i class="fa fa-angle-right mr-2"></i>Classes</a>
+                    <a class="text-white" href="products.php"><i class="fa fa-angle-right mr-2"></i>Products</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
